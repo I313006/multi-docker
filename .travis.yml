@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t apurvsap/react-test -f ./cleint/Dockerfile.dev ./client
+
+script:
+  - docker run apurvsap/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t apurvsap/multi-client ./client
+  - docker build -t apurvsap/multi-nginx ./nginx
+  - docker build -t apurvsap/multi-server ./server
+  - docker build -t apurvsap/multi-worker ./worker
+
+#Log in to the docker CLI
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# Take docker images and push them to docker hub
+- docker push apurvsap/multi-client
+- docker push apurvsap/multi-nginx
+- docker push apurvsap/multi-server
+- docker push apurvsap/multi-worker
