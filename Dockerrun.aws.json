@@ -6,7 +6,7 @@
             "image": "apurvsap/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory": 129 
+            "memory": 128 
         },
         {
             "name": "server",
