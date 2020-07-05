@@ -6,36 +6,21 @@
             "image": "apurvsap/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory": 512,
-            "command": [
-                "tail",
-                "-f",
-                "/bin/bash"
-              ] 
+            "memory": 512 
         },
         {
             "name": "server",
             "image": "apurvsap/multi-server",
             "hostname": "api",
             "essential": false,
-            "memory": 512,
-            "command": [
-                "tail",
-                "-f",
-                "/bin/bash"
-              ]
+            "memory": 512
         },
         {
             "name" : "worker",
             "image" : "apurvsap/multi-worker",
             "hostname": "worker",
             "essential": false,
-            "memory": 512,
-            "command": [
-                "tail",
-                "-f",
-                "/bin/bash"
-              ]
+            "memory": 512
         },
         {
             "name" : "nginx",
@@ -49,12 +34,7 @@
                 }
             ],
             "links": ["client", "server"],
-            "memory": 128,
-            "command": [
-                "tail",
-                "-f",
-                "/bin/bash"
-              ]
+            "memory": 512
         }
     ]
 }
