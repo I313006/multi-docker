@@ -1,7 +1,6 @@
 {
     "AWSEBDockerrunVersion": 2,
-    "containerDefinitions":[
-        {
+    "containerDefinitions":[{
             "name": "client",
             "image": "apurvsap/multi-client",
             "hostname": "client",
@@ -25,15 +24,12 @@
         {
             "name" : "nginx",
             "image": "apurvsap/multi-nginx",
-            "hostname" : "nginx",
             "essential" : true,
             "memory": 128,
-            "portMappings": [
-                {
+            "portMappings": [{
                     "hostPort": 80,
                     "containerPort": 80
-                }
-            ],
+                }],
             "links": ["client", "server"]
         }
     ]
